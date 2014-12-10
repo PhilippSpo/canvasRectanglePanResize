@@ -1,8 +1,10 @@
 // By Simon Sarris
 // www.simonsarris.com
-// sarris@acm.org
+// 
+// Extended by Philipp Sporrer
+// planifica.meteor.com
 //
-// Last update December 2011
+// Last update December 2014
 //
 // Free to use and distribute at will
 // So long as you are nice to people, etc
