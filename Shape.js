@@ -204,7 +204,6 @@ function CanvasState(canvas) {
     var r = Math.floor(Math.random()*255);
     var g = Math.floor(Math.random()*255);
     var b = Math.floor(Math.random()*255);
-    console.log(r, g, b);
     myState.addShape(new Shape(mouse.x - 10, mouse.y - 10, 20, 20, 'rgba('+r+','+g+','+b+',.6)'));
   }, true);
 
