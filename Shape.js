@@ -180,6 +180,7 @@ function CanvasState(canvas) {
     // }
   }, true);
   canvas.addEventListener('mousemove', function(e) {
+    this.style.cursor = 'auto';
     if (myState.dragging) {
       var mouse = myState.getMouse(e);
       // We don't want to drag the object by its top-left corner, we want to drag it
@@ -228,21 +229,22 @@ function CanvasState(canvas) {
     // 1. top left
     else if (checkCloseEnough(mouseX, self.x, self.closeEnough) && checkCloseEnough(mouseY, self.y, self.closeEnough)) {
       myState.dragTL = true;
+      e.target.style.cursor='nw-resize';
     }
     // 2. top right
     else if (checkCloseEnough(mouseX, self.x + self.w, self.closeEnough) && checkCloseEnough(mouseY, self.y, self.closeEnough)) {
       myState.dragTR = true;
-
+      e.target.style.cursor='ne-resize';
     }
     // 3. bottom left
     else if (checkCloseEnough(mouseX, self.x, self.closeEnough) && checkCloseEnough(mouseY, self.y + self.h, self.closeEnough)) {
       myState.dragBL = true;
-
+      e.target.style.cursor='sw-resize';
     }
     // 4. bottom right
     else if (checkCloseEnough(mouseX, self.x + self.w, self.closeEnough) && checkCloseEnough(mouseY, self.y + self.h, self.closeEnough)) {
       myState.dragBR = true;
-
+      e.target.style.cursor='se-resize';
     }
     // (5.) none of them
     else {
@@ -259,6 +261,7 @@ function CanvasState(canvas) {
     var mouseY = mouse.y;
 
     if (myState.dragTL) {
+      e.target.style.cursor='nw-resize';
       // switch to top right handle
       if (((shape.x + shape.w) - mouseX) < 0) {
         myState.dragTL = false;
@@ -274,6 +277,7 @@ function CanvasState(canvas) {
       shape.x = mouseX;
       shape.y = mouseY;
     } else if (myState.dragTR) {
+      e.target.style.cursor='ne-resize';
       // switch to top left handle
       if ((shape.x - mouseX) > 0) {
         myState.dragTR = false;
@@ -288,6 +292,7 @@ function CanvasState(canvas) {
       shape.h += shape.y - mouseY;
       shape.y = mouseY;
     } else if (myState.dragBL) {
+      e.target.style.cursor='sw-resize';
       // switch to bottom right handle
       if (((shape.x + shape.w) - mouseX) < 0) {
         myState.dragBL = false;
@@ -302,6 +307,7 @@ function CanvasState(canvas) {
       shape.h = Math.abs(shape.y - mouseY);
       shape.x = mouseX;
     } else if (myState.dragBR) {
+      e.target.style.cursor='se-resize';
       // switch to bottom left handle
       if ((shape.x - mouseX) > 0) {
         myState.dragBR = false;
